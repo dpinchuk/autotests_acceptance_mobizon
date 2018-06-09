@@ -62,10 +62,10 @@ public class UserAuthorizationTest {
         // 6. Клик на кнопку [Войти]
         System.out.println("Step 6. Click the button [Enter]");
         MainService.driver.findElement(By.xpath("//*[@id=\'btn-login\']")).click();
-        // 7. Проверить, что тестовый id пользователя совпадает с id, отображенным на сайте
-        System.out.println("Step 7. Check that the user's test id matches the id displayed on the site");
-        String id = MainService.driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/a[7]/span/span/span[1]/div[2]")).getText();
-        assertTrue(id.contains(USER_2688[0]));
+        // 7. Проверить, что настранице отображено сообщение об ошибке "Некоторые обязательные поля формы не заполнены."
+        System.out.println("Step 7. Check that the page displays an error message 'Some required form fields are not filled.'");
+        String id = MainService.driver.findElement(By.xpath("/html/body/div[1]/noindex/div[1]/span")).getText();
+        assertTrue(id.equals("Некоторые обязательные поля формы не заполнены."));
     }
 
     /**
@@ -125,8 +125,9 @@ public class UserAuthorizationTest {
         MainService.driver.findElement(By.xpath("//*[@id=\'btn-login\']")).click();
         // 7. Проверить, что на странице отоюражено сообщение об ошибке "Личность пользователя неопределена"
         System.out.println("Step 7. Check that the page has an error message 'The identity of the user is undefined'");
-        String id = MainService.driver.findElement(By.xpath("/html/body/div[1]/noindex/div[1]/span/text()")).getText();
-        assertTrue(id.equals("Личность пользователя неопределена"));
+        MainService.driver.findElement(By.xpath("//html")).getText().contains("Личность пользователя неопределена");
+        boolean isTextInContent = MainService.driver.findElement(By.xpath("//html")).getText().contains("Личность пользователя неопределена");
+        assertTrue(isTextInContent);
     }
 
     /**
@@ -146,8 +147,8 @@ public class UserAuthorizationTest {
         MainService.driver.findElement(By.xpath("//*[@id=\'btn-login\']")).click();
         // 7. Проверить, что на странице отоюражено сообщение об ошибке "Личность пользователя неопределена"
         System.out.println("Step 7. Check that the page has an error message 'The identity of the user is undefined'");
-        String id = MainService.driver.findElement(By.xpath("/html/body/div[1]/noindex/div[1]/span/text()")).getText();
-        assertTrue(id.equals("Личность пользователя неопределена"));
+        boolean isTextInContent = MainService.driver.findElement(By.xpath("//html")).getText().contains("Личность пользователя неопределена");
+        assertTrue(isTextInContent);
     }
 
 }
