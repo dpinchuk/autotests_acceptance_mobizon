@@ -150,5 +150,5 @@ public class UserAuthorizationTest {
         boolean isTextInContent = MainService.driver.findElement(By.xpath("//html")).getText().contains("Личность пользователя неопределена");
         assertTrue(isTextInContent);
     }
-    
+
 }
