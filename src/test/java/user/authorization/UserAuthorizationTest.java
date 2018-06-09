@@ -151,4 +151,25 @@ public class UserAuthorizationTest {
         assertTrue(isTextInContent);
     }
 
+    /**
+     * @Negative #005
+     * Description: Тест проверяет неуспешную авторизацию с несущесвующим логином (mobile)
+     * <p>
+     * Expected: Открыта страница авторизации, на которой отображено сообщение:
+     * "Личность пользователя неопределена"
+     */
+    @Test
+    public void authorisationLoginEmailNegative2______() {
+        System.out.println("#003. The test checks for unsuccessful authorization with a fake login (email).");
+        // Выполненеие степов 1 - 5
+        AuthorizationService.authorizationForm("fake_email@test.com", "123456", "email");
+        // 6. Клик на кнопку [Войти]
+        System.out.println("Step 6. Click the button [Enter]");
+        MainService.driver.findElement(By.xpath("//*[@id=\'btn-login\']")).click();
+        // 7. Проверить, что на странице отоюражено сообщение об ошибке "Личность пользователя неопределена"
+        System.out.println("Step 7. Check that the page has an error message 'The identity of the user is undefined'");
+        boolean isTextInContent = MainService.driver.findElement(By.xpath("//html")).getText().contains("Личность пользователя неопределена");
+        assertTrue(isTextInContent);
+    }
+
 }
