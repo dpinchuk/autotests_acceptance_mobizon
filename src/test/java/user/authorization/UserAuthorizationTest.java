@@ -127,7 +127,7 @@ public class UserAuthorizationTest {
         boolean isTextInContent = false;
         System.out.println("Step 7. Check that the page has an error message 'The identity of the user is undefined'");
         MainService.driver.findElement(By.xpath("//html")).getText().contains("Личность пользователя неопределена");
-        isTextInContent = MainService.driver.findElement(By.xpath("//html")).getText().contains("Личность пользователя неопределена");
+        isTextInContent = MainService.driver.findElement(By.xpath("/html/body/noindex/div[1]/span")).getText().contains("Личность пользователя неопределена");
         assertTrue(isTextInContent);
     }
 
@@ -150,7 +150,7 @@ public class UserAuthorizationTest {
         boolean isTextInContent = false;
         System.out.println("Step 7. Check that the page has an error message 'The identity of the user is undefined'");
         MainService.driver.findElement(By.xpath("//html")).getText().contains("Личность пользователя неопределена");
-        isTextInContent = MainService.driver.findElement(By.xpath("//html")).getText().contains("Личность пользователя неопределена");
+        isTextInContent = MainService.driver.findElement(By.xpath("/html/body/noindex/div[1]/span")).getText().contains("Личность пользователя неопределена");
         assertTrue(isTextInContent);
     }
 
